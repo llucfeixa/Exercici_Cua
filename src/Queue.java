@@ -1,8 +1,3 @@
-
-
-
-
-
 public interface Queue<E> {
     /**
      * Mètode que permet afegir/encuar un nou element a la cua
@@ -11,7 +6,6 @@ public interface Queue<E> {
      * la cua estigui plena
      */
     public void push(E e) throws FullQueueException;
-
     public E pop() throws EmptyQueueException;
     public int size();
 }
