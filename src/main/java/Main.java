@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        Queue<Integer> q = new QueueImpl<Integer>();
+        Queue<Integer> q = new QueueImpl<Integer>(4);
         try {
             q.push(3);
             System.out.println(q.size());

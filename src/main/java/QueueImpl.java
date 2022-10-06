@@ -1,8 +1,11 @@
 public class QueueImpl<E> implements Queue<E> {
+    int len;
+    public QueueImpl (int length) {
+        this.len = length;
+    }
     private static class QueueNode<E> {
         private E object;
         private QueueNode<E> next;
-
         public QueueNode(E e) {
             this.object = e;
         }
@@ -13,6 +16,9 @@ public class QueueImpl<E> implements Queue<E> {
 
     public void push(E e) throws FullQueueException {
         QueueNode<E> i = new QueueNode<E>(e);
+        if (size() == len) {
+            throw new FullQueueException();
+        }
         if (last != null) {
             last.next = i;
         }
@@ -23,14 +29,11 @@ public class QueueImpl<E> implements Queue<E> {
     }
 
     public E pop() throws EmptyQueueException {
-        //Checking if the Queue is empty.
         if (first == null) {
             throw new EmptyQueueException();
         }
-        //Creating a new data object with the first element of the queue.
         E data = first.object;
         first = first.next;
-        //If the first element is null, the last will also be null.
         if (first == null) {
             last = null;
         }
